@@ -2,7 +2,7 @@ from playwright.sync_api import Page
 
 
 class SearchPage:
-    """Страница избранных товаров"""
+    """Страница искомых товаров"""
 
     def __init__(self, page: Page, logger):
         self.logger = logger

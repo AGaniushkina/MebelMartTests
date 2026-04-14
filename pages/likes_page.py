@@ -1,9 +1,8 @@
 from playwright.sync_api import Page
 
 
-class FavoritePage:
-    """Страница избранных товаров"""
-
+class LikesPage:
+    """Страница понравившихся товаров"""
     def __init__(self, page: Page, logger):
         self.logger = logger
         self.page = page

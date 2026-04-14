@@ -1,9 +1,7 @@
 import re
 
-import allure
 from playwright.sync_api import Page, expect
 
-import allure
 import logging
 
 logger = logging.getLogger(__name__)
@@ -35,12 +33,5 @@ class CartPage:
         raw_total = self.page.locator("text=/^Итого:/").inner_text()
         return re.sub(r"\D", "", raw_total)
 
-    @allure.step("Получение данных о товаре в корзине")
-    def get_cart_item_details(self):
-        name = self.page.locator(self.ITEM_NAME).first.text_content().strip()
 
-        price_text = self.page.locator(self.ITEM_PRICE).first.text_content().strip()
-        price = int("".join(filter(str.isdigit, price_text)))
 
-        logger.info(f"Товар в корзине: {name}, Цена: {price}")
-        return {"name": name, "price": price}

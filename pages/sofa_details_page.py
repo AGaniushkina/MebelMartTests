@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class SofaDetailsPage:
-    """Страница деталей дивана"""
+    """Страница деталей товара"""
 
     def __init__(self, page: Page, logger):
         self.logger = logger
@@ -44,14 +44,3 @@ class SofaDetailsPage:
         btn_to_cart.click()
 
         self.logger.info(f"Нажата кнопка 'В корзину'")
-
-    @allure.step("Получение цены со страницы товара")
-    def get_product_price(self):
-        price_locator = self.page.locator("span[itemprop='price']")
-
-        price_text = price_locator.text_content().strip()
-
-        price = int("".join(filter(str.isdigit, price_text)))
-
-        logger.info(f"Цена на странице товара: {price}")
-        return price
